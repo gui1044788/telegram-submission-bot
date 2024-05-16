@@ -1,16 +1,17 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-import time
 import json
-import telegram.ext
-import telegram
-import sys
-import datetime
-import os
 import logging
+import os
+import sys
 import threading
+import time
+from importlib import reload
+
 import six
+import telegram
+import telegram.ext
 
 if six.PY2:
     reload(sys)
@@ -128,7 +129,8 @@ def process_command(bot, update):
 图片
 音频/语音
 视频
-文件""")
+文件
+请勿同时选择多条(图片/音频/语音/视频/文件,避免机器人分条发送!""")
         return
     if command == 'version':
         bot.send_message(chat_id=update.message.chat_id,
